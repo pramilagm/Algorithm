@@ -1,0 +1,7 @@
+def vowelsof(e){
+    var vowels =['a','e','i','o','u'];
+    for(let i=0;i<e.length;i++){
+        console.log(vowels.indexof)
+    }
+
+}
