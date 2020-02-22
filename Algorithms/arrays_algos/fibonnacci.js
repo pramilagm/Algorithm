@@ -23,3 +23,17 @@ function fib(n, memo = []) {
   return result;
 }
 console.log(fib(500));
+
+function fib_bootom_up(n) {
+  if (n == 1 || n == 2) {
+    return 1;
+  }
+  var bottom_up = bottom_up[n + 1];
+  bottom_up[1] = 1;
+  bottom_up[2] = 1;
+  for (var i = 3; i < n; i++) {
+    bottom_up[i] = bottom_up[i - 1] + bottom_up[i + 1];
+  }
+  return bottom_up[i];
+}
+console.log(fib_bootom_up(5));
