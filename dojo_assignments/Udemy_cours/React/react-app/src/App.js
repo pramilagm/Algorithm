@@ -1,34 +1,65 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
-const App = props => {
-  const [state, setState] = useState({
+
+class App extends Component {
+  state = {
     persons: [
       { name: "Pramila", age: 25 },
       { name: "shirish", age: 28 }
     ]
-  });
-  const switnameHandler = () => {
+  };
+  switnameHandler = newName => {
     // console.log("was clicked");
-    setState({
+    this.setState({
       persons: [
-        { name: "Pramila Gharti Magar", age: 25 },
-        { name: "shirish", age: 27 }
+        { name: newName, age: 25 },
+        { name: "Shirish", age: 27 }
       ]
     });
   };
-
-  return (
-    <div className="App">
-      <h1>Hello React</h1>
-      <p>This is really Working</p>
-      <button onClick={switnameHandler}>click to see changes</button>
-      <Person name={state.persons[0].name} age={state.persons[0].age} />
-      <Person name={state.persons[1].name} age={state.persons[1].age}>
-        I love games
-      </Person>
-    </div>
-  );
-};
-
+  namechangeHandler = event => {
+    this.setState({
+      persons: [
+        { name: "pramila", age: 25 },
+        { name: event.target.value, age: 20 },
+        { name: "Shirish", age: 27 }
+      ]
+    });
+  };
+  render() {
+    const style = {
+      backgroundColor: "orange",
+      font: "inherit",
+      border: "1px solid blue",
+      padding: "8px",
+      cursor: "pointer"
+    };
+    return (
+      <div className="App">
+        <h1>Hello React</h1>
+        <p>This is really Working</p>
+        <button
+          style={style}
+          onClick={this.switnameHandler.bind(this, "Pramila G!!")}
+        >
+          click to see changes
+        </button>
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+          onClick={this.switnameHandler.bind(this, "Pramila Gharti")}
+        />
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+          click={this.switnameHandler.bind(this, "Shirish Shrestha")}
+          changed={this.namechangeHandler}
+        >
+          I love games
+        </Person>
+      </div>
+    );
+  }
+}
 export default App;
