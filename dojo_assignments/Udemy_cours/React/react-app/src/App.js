@@ -7,7 +7,8 @@ class App extends Component {
     persons: [
       { name: "Pramila", age: 25 },
       { name: "shirish", age: 28 }
-    ]
+    ],
+    showPersons: false
   };
   switnameHandler = newName => {
     // console.log("was clicked");
@@ -27,6 +28,12 @@ class App extends Component {
       ]
     });
   };
+  togglepersonHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({
+      showPersons: !doesShow
+    });
+  };
   render() {
     const style = {
       backgroundColor: "orange",
@@ -39,25 +46,26 @@ class App extends Component {
       <div className="App">
         <h1>Hello React</h1>
         <p>This is really Working</p>
-        <button
-          style={style}
-          onClick={this.switnameHandler.bind(this, "Pramila G!!")}
-        >
+        <button style={style} onClick={this.togglepersonHandler}>
           click to see changes
         </button>
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-          onClick={this.switnameHandler.bind(this, "Pramila Gharti")}
-        />
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-          click={this.switnameHandler.bind(this, "Shirish Shrestha")}
-          changed={this.namechangeHandler}
-        >
-          I love games
-        </Person>
+        {this.state.showPersons ? (
+          <div>
+            <Person
+              name={this.state.persons[0].name}
+              age={this.state.persons[0].age}
+              onClick={this.switnameHandler.bind(this, "Pramila Gharti")}
+            />
+            <Person
+              name={this.state.persons[1].name}
+              age={this.state.persons[1].age}
+              click={this.switnameHandler.bind(this, "Shirish Shrestha")}
+              changed={this.namechangeHandler}
+            >
+              I love games
+            </Person>
+          </div>
+        ) : null}
       </div>
     );
   }
