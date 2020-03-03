@@ -18,3 +18,16 @@ pairwithSum(arr, sum);
 
 console.log("hello");
 //This is O(1)time space complexity because it is scanning one at a time rather scanning the whole list of element
+// function palindrome(string) {
+//   low = 0;
+//   high = string.length;
+//   while (low < high) {
+//     if (string[low] == string[high]) {
+//       return true;
+//     }
+//     low += 1;
+//     high--;
+//   }
+//   return false;
+// }
+// console.log(palindrome("123321"));
