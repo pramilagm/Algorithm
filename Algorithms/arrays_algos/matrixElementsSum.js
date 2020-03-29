@@ -1,10 +1,19 @@
 function matrixElementsSum(matrix) {
   var total = 0;
   for (var i = 0; i < matrix[0].length; i++) {
+    console.log(i);
+    console.log("---------------");
+    console.log(matrix[i]);
+    console.log("?????");
     for (var j = 0; j < matrix.length; j++) {
+      console.log("|||||||||||||||||");
+
+      console.log(matrix[j]);
+      console.log(matrix[i]);
+      console.log("//////////////");
+      console.log(matrix[j][i]);
       if (matrix[j][i] === 0) break;
       else {
-        console.log(matrix[j][i]);
         total += matrix[j][i];
       }
     }
